@@ -1,0 +1,86 @@
+{
+  //google se
+  "project_info": {
+    "project_number": "1044367459649",
+    "firebase_url": "https://bussing-bb210-default-rtdb.firebaseio.com",
+    "project_id": "bussing-bb210",
+    "storage_bucket": "bussing-bb210.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044367459649:android:9af70689eb7b77ccc38dc0",
+        "android_client_info": {
+          "package_name": "com.example.bussingsw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044367459649-vmqbht1hq996hbn7i7benmq63klcnb45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2ubcl3DiPnAmNa4NPVTHwleLi5zUbeLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044367459649-vmqbht1hq996hbn7i7benmq63klcnb45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044367459649:android:7027dbc40368aa61c38dc0",
+        "android_client_info": {
+          "package_name": "marlon.dev.bussing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044367459649-ccaur5anku8a0lv0njgraqom233fcqqu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "marlon.dev.bussing",
+            "certificate_hash": "1a25de49795be159d4a7f9839ac1c55bc3f78b59"
+          }
+        },
+        {
+          "client_id": "1044367459649-l6etdn7ou1dlm2mb6asicen35fbap84c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "marlon.dev.bussing",
+            "certificate_hash": "abb85c49367eeec01f55620507e4ccf6aa50bfdc"
+          }
+        },
+        {
+          "client_id": "1044367459649-vmqbht1hq996hbn7i7benmq63klcnb45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2ubcl3DiPnAmNa4NPVTHwleLi5zUbeLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044367459649-vmqbht1hq996hbn7i7benmq63klcnb45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
