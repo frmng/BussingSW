@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:background="@drawable/bg_gradient3"
+    tools:context=".ui.bussing_welcomepage.Welcome">
+
+    <ImageView
+        android:id="@+id/imageIllustration"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bussing_logo_png" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="BussingSW"
+            android:textColor="#333333"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:text="Stay on track with live trip updates, quick ticket scanning, and an easy-to-use wallet system. Everything you need for a smooth ride."
+        android:textSize="17dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#7d7d7d"
+        android:fontFamily="@font/nunito_semibold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signInButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="Log In"
+            android:textSize="18dp"
+            android:textColor="#f9f9f9"
+            app:cornerRadius="10dp"
+            app:backgroundTint="#384246"
+            android:fontFamily="@font/nunito_semibold"
+            android:textAllCaps="false"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

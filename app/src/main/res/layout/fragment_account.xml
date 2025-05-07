@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    tools:context=".ui.Accounts.AccountFragment"
+    android:background="@drawable/bg_gradient">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:gravity="center"
+            android:elevation="8dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userProfile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/default_user1"
+                android:scaleType="centerCrop"
+                android:gravity="center"
+                app:strokeWidth="3dp"
+                app:strokeColor="#133AC1"
+                android:padding="1dp"
+                app:shapeAppearanceOverlay="@style/AccountProfileShape"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/update"
+            android:layout_marginVertical="150dp"
+            android:layout_marginHorizontal="208dp"
+            android:elevation="12dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:layout_marginTop="140dp"
+            app:cardCornerRadius="28dp"
+            android:backgroundTint="#f9f9f9"
+            android:elevation="4dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="80dp"
+                android:gravity="center"
+                android:text="Edit Profile"
+                android:textSize="28dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#333333"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="140dp"
+                android:text="Name"
+                android:textSize="18dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#333333"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="170dp"
+                android:layout_marginHorizontal="24dp"
+                android:textColorHint="#244ddc"
+                app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#333333"
+                app:boxStrokeWidth="0dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxBackgroundColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userNameTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint=""
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="16dp"
+                    android:textColor="#6B6B6B"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="18dp"
+                    android:backgroundTint="#E2E2E2"
+                    android:paddingTop="16dp"
+                    android:inputType="textEmailAddress"
+                    android:focusable="false"
+                    android:clickable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="240dp"
+                android:text="Email"
+                android:textSize="18dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#333333"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="270dp"
+                android:layout_marginHorizontal="24dp"
+                app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#e2e2e2"
+                app:boxStrokeWidth="0dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxBackgroundColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint=""
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="16dp"
+                    android:textColor="#6B6B6B"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="18dp"
+                    android:paddingTop="16dp"
+                    android:inputType="textEmailAddress"
+                    android:backgroundTint="#E2E2E2"
+                    android:focusable="false"
+                    android:clickable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="340dp"
+                android:text="User ID"
+                android:textSize="18dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#333333"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="370dp"
+                android:layout_marginHorizontal="24dp"
+                app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#e2e2e2"
+                app:boxStrokeWidth="0dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxBackgroundColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/uidTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint=""
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="16dp"
+                    android:textColor="#6B6B6B"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textSize="18dp"
+                    android:paddingTop="16dp"
+                    android:backgroundTint="#e2e2e2"
+                    android:focusable="false"
+                    android:clickable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="520dp"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="14dp"
+                android:textColor="#f9f9f9"
+                android:gravity="center"
+                android:backgroundTint="#384246"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/logout"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="24dp"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>
