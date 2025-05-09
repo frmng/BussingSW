@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.bussingsw.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment {
     private ListenerRegistration verifiedTicketsListener;
     private ListenerRegistration ticketGeneratedListener;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,8 +71,14 @@ public class HomeFragment extends Fragment {
         scannedTicketAmount = root.findViewById(R.id.scannedTicketAmount);
         download = root.findViewById(R.id.download);
 
+        swipeRefreshLayout = root.findViewById(R.id.swipeRefreshLayout);
+
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            refreshData();
+        });
 
         // Set up download button click listener
         download.setOnClickListener(v -> {
@@ -84,18 +92,13 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
+    private void refreshData() {
         if (auth.getCurrentUser() == null) return;
         String currentDriverUid = auth.getCurrentUser().getUid();
 
-        // Detach if already attached
         if (verifiedTicketsListener != null) verifiedTicketsListener.remove();
         if (ticketGeneratedListener != null) ticketGeneratedListener.remove();
 
-        // Load tickets scanned by the driver
         verifiedTicketsListener = db.collection("VerifiedTicketsCollection")
                 .whereEqualTo("uid", currentDriverUid)
                 .addSnapshotListener((snapshots, error) -> {
@@ -119,7 +122,9 @@ public class HomeFragment extends Fragment {
                             String ticketCode = doc.getId();
                             Map<String, Object> ticketData = doc.getData();
 
-                            String priceStr = (String) ticketData.get("price");
+                            // Get price safely
+                            Object priceObj = ticketData.get("price");
+                            String priceStr = priceObj != null ? priceObj.toString() : "0";
                             double price = 0;
                             try {
                                 price = Double.parseDouble(priceStr);
@@ -135,19 +140,28 @@ public class HomeFragment extends Fragment {
                             SimpleDateFormat compareFormat = new SimpleDateFormat("ddMMMMyyyy", Locale.getDefault());
 
                             if (bookingDate != null) {
+                                Log.d("BookingDateCheck", "Raw bookingDate: " + bookingDate);
                                 try {
                                     Date parsedBookingDate = dbFormat.parse(bookingDate);
                                     String normalizedBookingDate = compareFormat.format(parsedBookingDate);
+                                    Log.d("BookingDateCheck", "Normalized date: " + normalizedBookingDate + " | Today: " + todayDate);
 
                                     if (todayDate.equals(normalizedBookingDate)) {
                                         todayTotalPrice += price;
                                         todayScannedCount++;
+                                        Log.d("TicketCount", "Ticket counted for today: " + ticketCode + ", Price: " + priceStr);
+                                    } else {
+                                        Log.d("TicketCount", "Ticket NOT counted (not today): " + ticketCode);
                                     }
+
                                 } catch (ParseException e) {
                                     Log.w("DateParse", "Failed to parse bookingDate: " + bookingDate, e);
                                 }
+                            } else {
+                                Log.w("BookingDateMissing", "bookingDate is null for ticket: " + ticketCode);
                             }
 
+                            // Add ticket to the list
                             ScannedTicketLists ticket = new ScannedTicketLists(
                                     (String) ticketData.get("from"),
                                     (String) ticketData.get("to"),
@@ -162,14 +176,19 @@ public class HomeFragment extends Fragment {
                             scannedTickets.add(ticket);
                         }
 
+                        Log.d("FinalStats", "Total tickets: " + scannedPassengerCount + ", Total amount: " + totalTicketAmount);
+                        Log.d("FinalStats", "Today's tickets: " + todayScannedCount + ", Today's amount: " + todayTotalPrice);
+
                         adapter.notifyDataSetChanged();
                         walletBalance.setText("₱" + String.format("%.2f", totalTicketAmount));
                         passengerCount.setText(String.valueOf(todayScannedCount));
                         scannedTicketAmount.setText("₱" + String.format("%.2f", todayTotalPrice));
+
+                        swipeRefreshLayout.setRefreshing(false);
+
                     }
                 });
 
-        // Load revenue from all generated tickets
         ticketGeneratedListener = db.collection("TicketGeneratedCollection")
                 .addSnapshotListener((snapshots, error) -> {
                     if (error != null) {
@@ -195,8 +214,18 @@ public class HomeFragment extends Fragment {
                         }
 
                         totalRevenue.setText("₱" + String.format("%.2f", totalRevenueEarned));
+
+                        swipeRefreshLayout.setRefreshing(false);
+
                     }
                 });
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refreshData();
     }
 
     @Override
@@ -278,4 +307,3 @@ public class HomeFragment extends Fragment {
     }
 
 }
-//try
